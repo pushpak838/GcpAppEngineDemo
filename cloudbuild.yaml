@@ -1,6 +1,6 @@
 options:
   logging: CLOUD_LOGGING_ONLY
-  
+service_account: 137969414184@cloudbuild.gserviceaccount.co
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
