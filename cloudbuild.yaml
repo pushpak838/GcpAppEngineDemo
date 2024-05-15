@@ -3,6 +3,11 @@ steps:
   entrypoint: 'dotnet'
   args: ['publish', '-c', 'Release', '-o', './publish']
 
+# New step to copy app.yaml into the publish directory
+- name: 'ubuntu'
+  entrypoint: 'bash'
+  args: ['-c', 'cp ./app.yaml ./publish/app.yaml']
+
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy', './publish/app.yaml']
 
