@@ -4,6 +4,7 @@ entrypoint: dotnet GcpAppEngineDemo.dll
 service: test-app
 
 runtime_config:
+  runtime_version: "6"
   operating_system: "ubuntu22"
   
 env_variables:
