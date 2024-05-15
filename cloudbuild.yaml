@@ -1,7 +1,14 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
-service_account: 137969414184@cloudbuild.gserviceaccount.co
 steps:
+- name: 'mcr.microsoft.com/dotnet/sdk:6.0'
+  entrypoint: 'dotnet'
+  args: ['restore']
+
+- name: 'mcr.microsoft.com/dotnet/sdk:6.0'
+  entrypoint: 'dotnet'
+  args: ['publish', '-c', 'Release', '-o', 'publish']
+
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
+  args: ['app', 'deploy', 'publish/app.yaml']
+
+timeout: '1600s'
 
