@@ -1,0 +1,21 @@
+runtime: aspnetcore
+env: flex
+entrypoint: dotnet GcpAppEngineDemo.dll
+service: test-app
+
+runtime_config:
+  operating_system: "ubuntu22"
+  
+env_variables:
+  ASPNETCORE_ENVIRONMENT: "Production"
+
+network:
+  name: gunjan-vpc
+  subnetwork_name: app-subnet  # Specify the name of your subnet
+  session_affinity: true        # (Optional) Enable session affinity for sticky sessions
+
+automatic_scaling:
+  min_num_instances: 1         
+  max_num_instances: 2        
+  cpu_utilization:
+    target_utilization: 0.65
