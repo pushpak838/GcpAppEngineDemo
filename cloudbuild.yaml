@@ -7,3 +7,6 @@ steps:
   args: ['app', 'deploy', './publish/app.yaml']
 
 timeout: '1600s'  # Adjust this timeout based on your expected build time
+
+options:
+  logging: CLOUD_LOGGING_ONLY
